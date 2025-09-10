@@ -39,10 +39,9 @@ pip install -r requirements.txt
 python app.py
 ```
 
-5. Click the ksfx icon (၊၊||၊) in the menu bar.
-6. Select `Enable` to activate the airhorn.
-7. Press any key to hear the airhorn sound.
-8. Select `Disable` to turn off the airhorn.
+5. Press any key to hear the airhorn sound.
+6. To disable the airhorn, either stop the script or click the ksfx icon (၊၊||၊)
+   in the menu bar and select `Off`.
 
 
 ## Notes
@@ -52,4 +51,4 @@ python app.py
 ## TODO
 
 - Provide mechanism that lets users select their own sound effect files.
-- Find a better menu bar icon.
+- Convert into a proper Python package.

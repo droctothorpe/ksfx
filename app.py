@@ -47,8 +47,8 @@ class AirhornApp(rumps.App):
         self.volume_options["10%"].state = 1
         
         # Set up main menu items
-        self.menu = ["Enable", "Disable", None, self.volume_menu, None, "Quit"]
-        self.enabled = False
+        self.menu = ["On", "Off", None, self.volume_menu, None, "Quit"]
+        self.enabled = True
         self.listener = None
         
         # Pre-load the sound file with the default volume applied
@@ -57,7 +57,7 @@ class AirhornApp(rumps.App):
         # Track the currently playing sounds
         self.play_objs = []
         
-    @rumps.clicked("Enable")
+    @rumps.clicked("On")
     def enable(self, _):
         if not self.enabled:
             self.enabled = True
@@ -68,7 +68,7 @@ class AirhornApp(rumps.App):
             self.listener.start()
             # rumps.notification("Airhorn", "Keyboard Airhorn", "Airhorn enabled! Press any key to hear it.")
     
-    @rumps.clicked("Disable")
+    @rumps.clicked("Off")
     def disable(self, _):
         if self.enabled:
             self.enabled = False
@@ -138,7 +138,7 @@ class AirhornApp(rumps.App):
             
             # Create WaveObject from the adjusted audio data
             self.wave_obj = sa.WaveObject(audio_data, n_channels, sample_width, frame_rate)
-            self.sound_pool = [self.wave_obj] * 100
+            self.sound_pool = [self.wave_obj] * 1
     
     def on_key_press(self, key):
         # Play sound when any key is pressed
@@ -162,4 +162,8 @@ class AirhornApp(rumps.App):
         return True  # Continue listening
 
 if __name__ == "__main__":
-    AirhornApp().run()
+    app = AirhornApp()
+    # Start keyboard listener automatically when app launches
+    app.listener = keyboard.Listener(on_press=app.on_key_press)
+    app.listener.start()
+    app.run()
