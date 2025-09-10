@@ -1,0 +1,5 @@
+pynput==1.7.6
+PyObjC==9.0.1
+simpleaudio==1.0.4
+pydub==0.25.1
+rumps==0.4.0
